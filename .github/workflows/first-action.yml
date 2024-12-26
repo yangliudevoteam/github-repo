@@ -15,9 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     # Use a matrix strategy to run the job for each changed folder
 
-    # permissions:
-    #   contents: read
-    #   id-token: 'write'
+    permissions:
+      contents: read
+      id-token: 'write'
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
