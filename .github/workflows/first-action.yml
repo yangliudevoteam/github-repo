@@ -31,7 +31,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Automated PR"
           branch: "test" # The name of the branch to create
-          title: "Automated Pull Request"
+          title: "Automated Pull Request1"
           body: "This PR was automatically created by GitHub Actions."
           base: main  # The target branch for the PR
 
