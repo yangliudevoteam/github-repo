@@ -5,10 +5,6 @@ on:
     branches:
       - 'test' # To be changed: main
 
-    # Trigger only when files within specific folders change!
-    paths:
-      - '.github/workflows/first-action.yml'
-      # Add more folders as needed
 
 env:
   orch-project: sn-pj-iam-management
