@@ -16,8 +16,8 @@ jobs:
     # Use a matrix strategy to run the job for each changed folder
 
     permissions:
-      contents: read, write
-      id-token: 'write'
+      contents: write
+      id-token: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
