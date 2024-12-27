@@ -13,8 +13,15 @@ jobs:
   create_pr_repo_sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Create PR
-        uses: funivan/github-autopr@0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: checking out code
+        uses: actions/checkout@v2
 
+
+      - name: Raise PR
+        uses: peter-vans/create-pull-request@v3
+        with:
+          branch: "auto-pr-branch"
+          base: main
+          title: "demo for auto pr"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
