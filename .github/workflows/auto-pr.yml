@@ -1,0 +1,29 @@
+name: Auto Raise PR
+
+on:
+  push:
+    branches:
+      - feature-branch # Replace with the branch you want to monitor for changes
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        base: main # Replace with your target branch
+        head: feature-branch # Replace with your source branch
+        title: "Automated Pull Request"
+        body: |
+          This PR was automatically created by GitHub Actions. It contains changes pushed to the `feature-branch`.
