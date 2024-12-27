@@ -18,10 +18,9 @@ jobs:
 
 
       - name: Raise PR
-        uses: peter-vans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v7
         with:
           branch: "auto-pr-branch"
           base: main
           title: "demo for auto pr"
           token: ${{ secrets.GITHUB_TOKEN }}
-          
