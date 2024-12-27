@@ -1,0 +1,35 @@
+name: Auto Raise PR
+
+on:
+  push:
+    branches:
+      - feature-branch
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Create a new branch
+      run: |
+        git checkout -b auto-pr-branch || git checkout auto-pr-branch
+        git push origin auto-pr-branch
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v7
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        base: main
+        branch: auto-pr-branch
+        title: "Demo for auto PR"
+        body: |
+          Automated changes by [create-pull-request](https://github.com/peter-evans/create-pull-request) GitHub action
+        always-create: true
