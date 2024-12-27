@@ -3,7 +3,7 @@ name: Auto Raise PR
 on:
   push:
     branches:
-      - feature-branch
+      - test
 
 jobs:
   create-pull-request:

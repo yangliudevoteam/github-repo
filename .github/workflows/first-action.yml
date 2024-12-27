@@ -3,7 +3,7 @@ name: Check roles
 on:
   push: # To be changed: pull-request
     branches:
-      - 'test' # To be changed: main
+      - test # To be changed: main
 
 
 env:
