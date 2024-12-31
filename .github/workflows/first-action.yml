@@ -27,5 +27,5 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           project_id: '${{env.orch-project}}'
-          workload_identity_provider: 'projects/federation-proj/locations/global/workloadIdentityPools/wlpool-githubiam/providers/wlprov-githubiam'
+          workload_identity_provider: 'projects/113864804372/locations/global/workloadIdentityPools/wlpool-githubiam'
           audience: "base"
