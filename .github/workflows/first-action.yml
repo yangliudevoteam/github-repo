@@ -1,26 +1,32 @@
-name: Check roles
+name: Test Federation
 
 on:
-  push: # To be changed: pull-request
-    branches:
-      - main # To be changed: main
+  workflow_dispatch:
+    # Trigger only when files within specific folders change
 
 
 env:
-  orch-project: sn-pj-iam-management
+  orch-project: federation-proj
 
 jobs:
-  create_pr_repo_sync:
+  terraform-apply:
+    name: Terraform Apply 
     runs-on: ubuntu-latest
+    # Use a matrix strategy to run the job for each changed folder
+
+    permissions:
+      contents: read
+      id-token: 'write'
     steps:
-      - name: checking out code
-        uses: actions/checkout@v2
-
-
-      - name: Raise PR
-        uses: peter-evans/create-pull-request@v7
+      - name: Checkout Code
+        uses: actions/checkout@v4
         with:
-          branch: "auto-pr-branch"
-          base: main
-          title: "demo for auto pr"
-          token: ${{ secrets.GITHUB_TOKEN }}
+            fetch-depth: 2  
+      - name: Authenticate to Google Cloud
+        if: steps.changes.outputs.changed == 'true'
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          project_id: '${{env.orch-project}}'
+          workload_identity_provider: 'projects/federation-proj/locations/global/workloadIdentityPools/wlpool-githubiam/providers/wlprov-githubiam'
+          audience: base
