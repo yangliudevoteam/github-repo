@@ -29,3 +29,4 @@ jobs:
           project_id: '${{env.orch-project}}'
           workload_identity_provider: 'projects/113864804372/locations/global/workloadIdentityPools/wlpool-githubiam/providers/wlprov-githubiam'
           audience: base
+          service_account: sa-1-873@federation-proj.iam.gserviceaccount.com
