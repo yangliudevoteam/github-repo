@@ -23,7 +23,6 @@ jobs:
         with:
             fetch-depth: 2  
       - name: Authenticate to Google Cloud
-        if: steps.changes.outputs.changed == 'true'
         id: auth
         uses: google-github-actions/auth@v2
         with:
