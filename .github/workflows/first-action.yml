@@ -6,7 +6,7 @@ on:
 
 
 env:
-  orch-project: federation-proj
+  orch-project: "federation-proj"
 
 jobs:
   terraform-apply:
