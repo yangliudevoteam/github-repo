@@ -28,4 +28,4 @@ jobs:
         with:
           project_id: '${{env.orch-project}}'
           workload_identity_provider: 'projects/federation-proj/locations/global/workloadIdentityPools/wlpool-githubiam/providers/wlprov-githubiam'
-          audience: base
+          audience: "base"
